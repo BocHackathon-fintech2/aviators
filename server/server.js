@@ -7,8 +7,4 @@ app.get('/', (req, res) => {
   });
 });
 
-app.login('/login', (req, res) => {
-
-});
-
 app.listen(3000, () => console.log('Gator app listening on port 3000!'));
