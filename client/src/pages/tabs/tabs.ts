@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+import { MerchantsPage } from '../merchants/merchants';
 import { HomePage } from '../home/home';
 
 @Component({
@@ -11,9 +12,11 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab3Root = MerchantsPage;
 
-  constructor() {
+  constructor(private _NAV: NavController) { }
 
+  logOut(): void {
+    console.log("Logging out...");
   }
 }
