@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { ScanPage } from '../pages/scan/scan';
 import { AccountsPage } from '../pages/accounts/accounts';
 import { HistoryPage } from '../pages/history/history';
+import { BillPage } from '../pages/bill/bill';
 import { SignupPage } from '../pages/signup/signup';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AccountListService } from '../services/account-list.service';
 import { BocService } from '../services/boc.service';
+import { HttpClientModule } from '@angular/common/http';
+import {NgxErrorsModule} from '@ultimate/ngxerrors';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { BocService } from '../services/boc.service';
     SignupPage,
     ScanPage,
     AccountsPage,
-    HistoryPage
+    HistoryPage,
+    BillPage,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { BocService } from '../services/boc.service';
     SignupPage,
     ScanPage,
     AccountsPage,
-    HistoryPage
+    HistoryPage,
+    BillPage,
   ],
   providers: [
     StatusBar,
