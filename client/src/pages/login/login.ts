@@ -20,8 +20,8 @@ export class LoginPage {
 		fb: FormBuilder
 	) {
 		this.loginForm = fb.group({
-			email: ['', Validators.compose([Validators.required, Validators.email])],
-			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+			email: ['panayiotis.s.constantinou@gmail.com', Validators.compose([Validators.required, Validators.email])],
+			password: ['123456', Validators.compose([Validators.required, Validators.minLength(6)])]
 		});
   }
   
@@ -36,6 +36,7 @@ export class LoginPage {
 			email: data.email,
 			password: data.password
 		};
+		
 		this.auth.signInWithEmail(credentials)
 			.then(
 				() => this.navCtrl.setRoot(TabsPage),

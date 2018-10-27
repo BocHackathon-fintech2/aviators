@@ -8,6 +8,9 @@ import { MerchantsPage } from '../pages/merchants/merchants';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { ScanPage } from '../pages/scan/scan';
+import { AccountsPage } from '../pages/accounts/accounts';
+import { HistoryPage } from '../pages/history/history';
 
 import { SignupPage } from '../pages/signup/signup';
 
@@ -32,7 +35,10 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     HomePage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ScanPage,
+    AccountsPage,
+    HistoryPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,10 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     HomePage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ScanPage,
+    AccountsPage,
+    HistoryPage
   ],
   providers: [
     StatusBar,

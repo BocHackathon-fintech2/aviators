@@ -18,7 +18,7 @@
   <div class="square-container">
     <div class="square">
       <div center class="content">
-        <ion-icon name="barcode"></ion-icon>
+        <ion-icon name="barcode" (click)="goToScanPage()"></ion-icon>
       </div>
     </div>
 
@@ -30,13 +30,13 @@
 
     <div class="square">
       <div center class="content">
-        <ion-icon name="card"></ion-icon>
+        <ion-icon name="card" (click)="goToAccountsPage()"></ion-icon>
       </div>
     </div>
 
     <div class="square">
       <div center class="content">
-        <ion-icon name="pie"></ion-icon>
+        <ion-icon name="pie" (click)="goToHistoryPage()"></ion-icon>
       </div>
     </div>
 
