@@ -27,27 +27,27 @@ app.get('/bocredirect', function (req, res) {
 app.get('/qrcodeurl', function (req, res) {
   var db = {
     "iban": "null",
-    "merchant": "Porfi cafe",
+    "merchant": "Costa Coffee",
     "item": [
       {
         "quantity": "2",
         "price": "0.50",
-        "name": "water"
+        "name": "Water"
       },
       {
         "quantity": "1",
         "price": "2",
-        "name": "freddo espresso"
+        "name": "Freddo espresso"
       },
       {
         "quantity": "1",
         "price": "3",
-        "name": "cappuchino"
+        "name": "Cappuchino"
       },
       {
         "quantity": "3",
         "price": "4",
-        "name": "sandwitch"
+        "name": "Sandwitch"
       }
     ],
     "total_amount": "18",
