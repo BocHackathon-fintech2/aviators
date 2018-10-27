@@ -11,7 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { ScanPage } from '../pages/scan/scan';
 import { AccountsPage } from '../pages/accounts/accounts';
 import { HistoryPage } from '../pages/history/history';
-
+import { BillPage } from '../pages/bill/bill';
 import { SignupPage } from '../pages/signup/signup';
 
 
@@ -26,6 +26,10 @@ import { firebaseConfig } from '../config';
 
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
+import { HttpClientModule } from '@angular/common/http';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+
 import {NgxErrorsModule} from '@ultimate/ngxerrors';
 @NgModule({
   declarations: [
@@ -38,13 +42,16 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     SignupPage,
     ScanPage,
     AccountsPage,
-    HistoryPage
+    HistoryPage,
+    BillPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig.fire),
-    NgxErrorsModule
+    NgxErrorsModule,
+    HttpClientModule,
+    NgxDatatableModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +64,8 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     SignupPage,
     ScanPage,
     AccountsPage,
-    HistoryPage
+    HistoryPage,
+    BillPage,
   ],
   providers: [
     StatusBar,
