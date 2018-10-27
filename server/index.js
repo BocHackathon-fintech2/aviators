@@ -1,10 +1,14 @@
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 const PORT = process.env.PORT || 5000
 const app = express();
 
+
+
 app
   .use(express.static(path.join(__dirname, 'public')))
+  .use(cors())
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
@@ -25,7 +29,7 @@ app.get('/bocredirect', function (req, res) {
 
 
 app.get('/qrcodeurl', function (req, res) {
-  var db = {
+  var jsonTxt = {
     "iban": "null",
     "merchant": "Costa Coffee",
     "item": [
@@ -51,13 +55,8 @@ app.get('/qrcodeurl', function (req, res) {
       }
     ],
     "total_amount": "18",
-    "date_of_purchase": "",
+    "date_of_purchase": new Date()
   };
 
-  myData = JSON.parse(jsonTxt, function (key, value) {
-    if (key === 'date_of_purchase') { return new Date(); }
-    //any additonal custom logic you may need later...
-  });
-
-  res.jsonp(db);
+  res.jsonp(jsonTxt);
 });

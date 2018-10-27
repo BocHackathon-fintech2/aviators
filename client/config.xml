@@ -3,11 +3,7 @@
     <name>aviators</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-<<<<<<< HEAD
     <content src="index.html" />
-=======
-    <content original-src="index.html" src="http://192.168.88.113:8101" />
->>>>>>> d3f591007b9f3b747b40cf276b0a5eb048ede3de
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
