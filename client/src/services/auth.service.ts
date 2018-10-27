@@ -27,6 +27,10 @@ export class AuthService {
 			 credentials.password);
 	}
 
+	getAuthenticatedUser() {
+		return this.user;
+	}
+
 
 }
 
