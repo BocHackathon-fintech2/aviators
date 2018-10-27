@@ -22,3 +22,42 @@ app.get('/bocredirect', function (req, res) {
   console.log(res);
   res.jsonp(res.body);
 });
+
+
+app.get('/qrcodeurl', function (req, res) {
+  var db = {
+    "iban": "null",
+    "merchant": "Porfi cafe",
+    "item": [
+      {
+        "quantity": "2",
+        "price": "0.50",
+        "name": "water"
+      },
+      {
+        "quantity": "1",
+        "price": "2",
+        "name": "freddo espresso"
+      },
+      {
+        "quantity": "1",
+        "price": "3",
+        "name": "cappuchino"
+      },
+      {
+        "quantity": "3",
+        "price": "4",
+        "name": "sandwitch"
+      }
+    ],
+    "total_amount": "18",
+    "date_of_purchase": "",
+  };
+
+  myData = JSON.parse(jsonTxt, function (key, value) {
+    if (key === 'date_of_purchase') { return new Date(); }
+    //any additonal custom logic you may need later...
+  });
+
+  res.jsonp(db);
+});
