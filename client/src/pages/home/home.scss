@@ -1,3 +1,33 @@
-page-home {
+* {
+  box-sizing: border-box;
+}
 
+.square-container {
+  padding: 8px;
+}
+
+.square {
+  width: calc(100% / 2);
+  float: left;
+  position: relative;
+  padding-bottom: calc(100% / 2);
+}
+
+.square .content {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    margin: 8px;
+    padding: 60px;
+    position: absolute;
+    color: white;
+    background-color:darkorange;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.square .content .icon  {
+  font-size:50px;
+}
+
+.logo-title {
+  font-size:60px ;
 }

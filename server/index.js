@@ -17,3 +17,8 @@ app.get('/qrcode', function(req, res) {
     id: "billId"
   });
 });
+
+app.get('/bocredirect', function (req, res) {
+  console.log(res);
+  res.jsonp(res.body);
+});
