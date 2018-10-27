@@ -21,6 +21,8 @@ import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { firebaseConfig } from '../config';
 
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+
 import {NgxErrorsModule} from '@ultimate/ngxerrors';
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
     AngularFireAuth,
-    AuthService
+    AuthService,
+    QRScanner
   ]
 })
 export class AppModule {}
