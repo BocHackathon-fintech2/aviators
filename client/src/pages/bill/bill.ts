@@ -5,9 +5,6 @@ import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { CurrencyPipe } from '@angular/common';
 
-import { Name } from '../../model/name/name.model';
-import { NameListService } from '../../services/name-list.service';
-
 
 /**
  * Generated class for the BillPage page.
@@ -29,7 +26,6 @@ export class BillPage {
   purchase_time: any;
   rooms: any;
   ref: any;
-  nameList: Observable<Name[]>
   billRef: firebase.database.Reference
 
   user: any;
@@ -38,7 +34,7 @@ export class BillPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private currencyPipe: CurrencyPipe) {
 
-    var user = firebase.auth().currentUser.email;
+    this.user = firebase.auth().currentUser.email;
 
     this.billRef = firebase.database().ref(`/bills/1`);
     this.billRef.on('value', billSnapshot => {
@@ -46,13 +42,14 @@ export class BillPage {
       this.rows = myBill.item;
 
       this.rows.forEach(element => {
-        element['to_check'] = (element['holder'] == user) ? "true" : "false";
-        element['to_disable'] = !(element['holder'] == user) && !(element['holder'] == "") ? "true" : "false"
-        element['cur'] = this.currencyPipe.transform(element['price'], 'EUR', true, '1.2-2');
+       
+        element['to_check'] = (element['holder'] == this.user) ? "true" : "false";
+        element['to_disable'] = !(element['holder'] == this.user) && !(element['holder'] == "") ? "true" : "false"
+        //element['cur'] = this.currencyPipe.transform(element['price'], 'EUR', true, '1.2-2');
       });
       this.merchant = myBill['merchant'];
       this.purchase_time = myBill['date_of_purchase'];
-
+      this.calculateTotal( this.rows) 
 
     });
   }
@@ -92,22 +89,28 @@ export class BillPage {
         //element['holder'] = (element['id'] == item.id && is_checked) ? user : element['holder'];
       }
     });
+
+    this.calculateTotal(rows);
+
     var updates = {};
-    updates['/item/'] = rows;
+    updates['/item'] = rows;
+    console.log(updates)
     this.billRef.update(updates);
+    
 
   }
 
-  calculateTotal() {
-    var total = 0
+  calculateTotal(rows) {
+    var total = 0;
 
-    this.rows.forEach(element => {
+    rows.forEach(element => {
       if (element['holder'] == this.user) {
         total += element['price'];
       }
     });
 
-    this.cur_total = this.currencyPipe.transform(total, 'EUR', true, '1.2-2');
+    //this.cur_total = this.currencyPipe.transform(total, 'EUR', true, '1.2-2');
+    this.cur_total = total;
 
   }
 
