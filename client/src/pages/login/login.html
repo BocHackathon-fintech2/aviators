@@ -16,7 +16,16 @@
 
 
 <ion-content>
-	<ion-img class="logo" float-center src="../../assets/imgs/logo.png"></ion-img>
+
+	<!-- <ion-img class="logo" center float-center src="../../assets/imgs/logo.png"></ion-img> -->
+	<div class="home-container">
+		<div class="row row-center">
+			<div class="col center">
+				<img alt="Logo" height="150" src="../../assets/imgs/logo.png">
+			</div>
+		</div>
+	</div>
+
 	<form (ngSubmit)="login()" [formGroup]="loginForm">
 		<ion-list inset>
 

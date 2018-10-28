@@ -98,11 +98,18 @@ export class AccountsPage {
 
               this.bocService.retrieveSubscriptionTemplate().then(data => {
 
+                // alert("retrieveSubscriptionTemplate");
+
                 var body = data[0];
 
                 this.bocService.updateSubscriptionTemplate(body).then(res => {
 
+                  // alert("updateSubscriptionTemplate");
+
                   this.bocService.getSelectedAccounts().then((accounts:any[]) => {
+
+                    // alert("getSelectedAccounts");
+
                     accounts.forEach(ac => {
                       var account: Account = {
                         title: ac['accountName'],
@@ -111,6 +118,8 @@ export class AccountsPage {
                         availableBalance: '',
                         currentBalance: ''
                       };
+
+                      // alert("accounts.forEach: " + ac['accountId']);
 
                       this.bocService.getAccountDetails(account.accountId).then(data => {
                         console.log(data);

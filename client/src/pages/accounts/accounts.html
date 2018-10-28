@@ -9,18 +9,12 @@
 
 <ion-content padding>
 
-
-  <div *ngIf="accountList$ | async;let accountList">
-    <ion-list>
-
-      <ion-item *ngFor="let account of accountList">
-        <ion-label (click)="viewAccount(account.accountId)" text-left>{{account.title}}</ion-label>
-        <ion-label (click)="viewAccount(account.accountId)" text-right>€{{account.availableBalance || 'currency'}}</ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-
-
+  <ion-list>
+    <ion-item *ngFor="let account of accountList | async">
+      <ion-label (click)="viewAccount(account.accountId)" text-left>{{account.title}}</ion-label>
+      <ion-label (click)="viewAccount(account.accountId)" text-right>€{{account.availableBalance || 'currency'}}</ion-label>
+    </ion-item>
+  </ion-list>
   <button ion-button color="primary" clear (click)="addAccount(account)">Add Account</button>
   <button ion-button color="secondary" clear (click)="clearAccounts()">Clear</button>
 </ion-content>
