@@ -35,6 +35,7 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
 import { BrowserTab } from '@ionic-native/browser-tab';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     AccountListService,
     BocService,
     BrowserTab,
-    InAppBrowser
+    InAppBrowser,
+    CurrencyPipe
   ]
 })
 export class AppModule {}
