@@ -27,10 +27,11 @@
     <ion-item *ngFor="let item of rows;">
       <ion-label>{{item.name}} </ion-label>
       <ion-checkbox [checked]="item.to_check"  [disabled]="item.to_disable"  (ionChange)="datachanged(item, rows, $event)"></ion-checkbox>
-      <ion-label text-right>{{item.price}}</ion-label>
+      <ion-label text-right>{{item.cur}}</ion-label>
     </ion-item>
   </ion-list>
 
+  <ion-label text-right>Total {{cur_total}} </ion-label>
   <button ion-button color="secondary" (click)="go_to_payment()" float-right>Proceed to payment</button>
 
 </ion-content>

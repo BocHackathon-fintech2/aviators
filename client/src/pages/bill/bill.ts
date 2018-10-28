@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
+import { CurrencyPipe } from '@angular/common';
 
 import { Name } from '../../model/name/name.model';
 import { NameListService } from '../../services/name-list.service';
@@ -33,7 +34,9 @@ export class BillPage {
 
   user: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
+  cur_total: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private currencyPipe: CurrencyPipe) {
 
     var user = firebase.auth().currentUser.email;
 
@@ -41,10 +44,11 @@ export class BillPage {
     this.billRef.on('value', billSnapshot => {
       var myBill = billSnapshot.val();
       this.rows = myBill.item;
-            
+
       this.rows.forEach(element => {
-        element['to_check'] = (element['holder'] == user ) ? "true" : "false";
-        element['to_disable'] = !(element['holder'] == user) &&  !(element['holder'] == "") ? "true" : "false"
+        element['to_check'] = (element['holder'] == user) ? "true" : "false";
+        element['to_disable'] = !(element['holder'] == user) && !(element['holder'] == "") ? "true" : "false"
+        element['cur'] = this.currencyPipe.transform(element['price'], 'EUR', true, '1.2-2');
       });
       this.merchant = myBill['merchant'];
       this.purchase_time = myBill['date_of_purchase'];
@@ -70,27 +74,42 @@ export class BillPage {
     // });
   }
 
-  datachanged(item, rows, e: any){
-    var user = firebase.auth().currentUser.email;
-    
+  datachanged(item, rows, e: any) {
+
+
     rows.forEach(element => {
       var is_checked = e.checked
-      if (element['id'] == item.id){
-        if (is_checked){
-          element['holder'] = user; 
-        }else{
+      if (element['id'] == item.id) {
+        if (is_checked) {
+          element['holder'] = this.user;
+
+        } else {
           element['holder'] = "";
         }
         delete element['to_check']
         delete element['to_disable']
-      
-      //element['holder'] = (element['id'] == item.id && is_checked) ? user : element['holder'];
-    }
-  });
+
+        //element['holder'] = (element['id'] == item.id && is_checked) ? user : element['holder'];
+      }
+    });
     var updates = {};
     updates['/item/'] = rows;
     this.billRef.update(updates);
 
   }
+
+  calculateTotal() {
+    var total = 0
+
+    this.rows.forEach(element => {
+      if (element['holder'] == this.user) {
+        total += element['price'];
+      }
+    });
+
+    this.cur_total = this.currencyPipe.transform(total, 'EUR', true, '1.2-2');
+
+  }
+
 
 }
