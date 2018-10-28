@@ -13,6 +13,7 @@ import { AccountsPage } from '../pages/accounts/accounts';
 import { HistoryPage } from '../pages/history/history';
 import { BillPage } from '../pages/bill/bill';
 import { SignupPage } from '../pages/signup/signup';
+import { AccountModalPage } from '../pages/account-modal/account-modal';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
@@ -25,11 +26,15 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { AccountListService } from '../services/account-list.service';
 import { BocService } from '../services/boc.service';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 import { NameListService } from '../services/name-list.service';
 
 import {NgxErrorsModule} from '@ultimate/ngxerrors';
+
+import { BrowserTab } from '@ionic-native/browser-tab';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +49,7 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     AccountsPage,
     HistoryPage,
     BillPage,
+    AccountModalPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,8 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     ScanPage,
     AccountsPage,
     HistoryPage,
-    BillPage,
+    AccountModalPage,
+    BillPage
   ],
   providers: [
     StatusBar,
@@ -76,7 +83,9 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     NameListService,
     QRScanner,
     AccountListService,
-    BocService
+    BocService,
+    BrowserTab,
+    InAppBrowser
   ]
 })
 export class AppModule {}

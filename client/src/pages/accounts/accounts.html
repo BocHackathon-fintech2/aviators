@@ -1,27 +1,26 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>accounts</ion-title>
+    <ion-title>Authorised Accounts</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-item>
-    <ion-label>Title</ion-label>
-    <ion-input [(ngModel)]="account.title" placeholder="title"></ion-input>
-  </ion-item>
 
-  <button ion-button block clear (click)="addAccount(account)">Add Account</button>
 
-  <ion-list>
-    <ion-list-header>
-      Accounts
-    </ion-list-header>
+  <div *ngIf="accountList$ | async;let accountList">
+    <ion-list>
 
-    <ion-item *ngFor="let account of accountList | async">
-      {{account.title}}
-    </ion-item>
-  </ion-list>
+      <ion-item *ngFor="let account of accountList">
+        <ion-label (click)="viewAccount(account.accountId)" text-left>{{account.title}}</ion-label>
+        <ion-label (click)="viewAccount(account.accountId)" text-right>€{{account.availableBalance || 'currency'}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <button ion-button color="primary" clear (click)="addAccount(account)">Add Account</button>
+  <button ion-button color="secondary" clear (click)="clearAccounts()">Clear</button>
 </ion-content>
