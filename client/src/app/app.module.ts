@@ -22,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from '../config';
 
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
@@ -29,7 +30,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-
+import { NameListService } from '../services/name-list.service';
 import {NgxErrorsModule} from '@ultimate/ngxerrors';
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     NgxErrorsModule,
     HttpClientModule,
     NgxDatatableModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -73,6 +75,7 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
     AngularFireAuth,
     AuthService,
+    NameListService,
     QRScanner
   ]
 })
