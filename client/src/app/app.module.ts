@@ -13,25 +13,24 @@ import { AccountsPage } from '../pages/accounts/accounts';
 import { HistoryPage } from '../pages/history/history';
 import { BillPage } from '../pages/bill/bill';
 import { SignupPage } from '../pages/signup/signup';
-
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-
 import { AngularFireModule } from 'angularfire2';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from '../config';
-
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
+import { AccountListService } from '../services/account-list.service';
+import { BocService } from '../services/boc.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { NameListService } from '../services/name-list.service';
+
 import {NgxErrorsModule} from '@ultimate/ngxerrors';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -52,7 +51,6 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     AngularFireModule.initializeApp(firebaseConfig.fire),
     NgxErrorsModule,
     HttpClientModule,
-    NgxDatatableModule,
     AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
@@ -76,7 +74,9 @@ import {NgxErrorsModule} from '@ultimate/ngxerrors';
     AngularFireAuth,
     AuthService,
     NameListService,
-    QRScanner
+    QRScanner,
+    AccountListService,
+    BocService
   ]
 })
 export class AppModule {}
