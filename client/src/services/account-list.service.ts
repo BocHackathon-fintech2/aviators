@@ -24,4 +24,8 @@ export class AccountListService {
   removeAccount(account: Account) {
     return this.accountListRef.remove(account.key);
   }
+
+  clearAccounts() {
+    this.accountListRef.remove();
+  }
 }

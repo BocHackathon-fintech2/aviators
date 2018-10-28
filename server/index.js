@@ -4,8 +4,6 @@ const cors = require('cors')
 const PORT = process.env.PORT || 5000
 const app = express();
 
-
-
 app
   .use(express.static(path.join(__dirname, 'public')))
   .use(cors())
@@ -13,8 +11,6 @@ app
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-
 
 app.get('/qrcode', function(req, res) {
   res.jsonp({
@@ -26,7 +22,6 @@ app.get('/bocredirect', function (req, res) {
   console.log(res);
   res.jsonp(res.body);
 });
-
 
 app.get('/qrcodeurl', function (req, res) {
   var jsonTxt = {
